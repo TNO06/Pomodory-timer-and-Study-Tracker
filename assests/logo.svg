@@ -1,0 +1,24 @@
+<!-- assets/logo.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- Soft pastel background -->
+  ircle cx="32" cy="32" r="28" fill="url(#grad)"/>
+  
+  <!-- Gradient: soft pink‑purple -->
+  <defs>
+    <radialGradient id="grad" cx="30%" cy="30%">
+      <stop offset="0%" stop-color="#f9c5f5"/>
+      <stop offset="100%" stop-color="#c8b6ff"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Open book icon -->
+  <path d="M18 20v24h28V20H18zm4 4h20v16H22V24z" fill="#f9f0ff"/>
+  <path d="M22 24h20v2H22z" fill="#9b8aff"/>
+
+  <!-- Tiny tomato (Pomodoro touch) -->
+  ircle cx="42" cy="18" r="3" fill="#ff9a8c"/>
+  <polygon points="42,15 40,13 44,13" fill="#7ab87a"/>
+
+  <!-- F‑like letter for “FocusFlow” -->
+  <path d="M24 40h8v2h-6v4h6v2h-8z" fill="#f9f0ff"/>
+</svg>
