@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FocusFlow | Aesthetic Pomodoro Study Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/logo.svg" />
+</head>
+<body>
+  <div class="page-shell">
+    <div class="ambient ambient-left"></div>
+    <div class="ambient ambient-right"></div>
+
+    <main class="app-layout">
+      <section class="hero-panel">
+        <div class="hero-copy">
+          <p class="eyebrow">Deep work sanctuary</p>
+          <h1>FocusFlow</h1>
+          <p class="hero-text">
+            A cozy digital study room with a polished pomodoro timer, soft productivity
+            stats, ambient integrations, and a dedicated way to track each study goal until done.
+          </p>
+
+          <div class="hero-chips">
+            <span>Pomodoro rhythm</span>
+            <span>Lo-fi ambience</span>
+            <span>Discord presence</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card__top">
+            <span class="live-pill">Live focus session</span>
+            <span class="hero-card__time">Today</span>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong id="pomodoros">0</strong>
+              <span>sessions done</span>
+            </div>
+            <div class="hero-stat">
+              <strong>4h</strong>
+              <span>focus goal</span>
+            </div>
+          </div>
+
+          <div class="hero-quote">
+            “Small, consistent focus blocks create your best work.”
+          </div>
+
+          <div class="wallpaper-panel">
+            <div class="section-heading">
+              <div>
+                <p class="section-label">Wallpaper</p>
+                <h3>Study room mood</h3>
+              </div>
+            </div>
+
+            <div class="wallpaper-switcher">
+              <button class="wallpaper-btn is-active" data-wallpaper="moon">Moonlit room</button>
+              <button class="wallpaper-btn" data-wallpaper="sunset">Sunset glow</button>
+              <button class="wallpaper-btn" data-wallpaper="forest">Forest calm</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="focus-board">
+        <div class="card timer-card">
+          <div class="timer-card__header">
+            <div>
+              <p class="section-label">Focus timer</p>
+              <h2>Your current session</h2>
+            </div>
+            <div class="phase-badge" id="phase">Work</div>
+          </div>
+
+          <div class="timer-display">
+            <span id="time">25:00</span>
+            <p class="timer-caption">Stay present, breathe slowly, and keep momentum.</p>
+          </div>
+
+          <div class="controls">
+            <button id="start">Start</button>
+            <button id="pause">Pause</button>
+            <button id="reset">Reset</button>
+          </div>
+
+          <div class="modes">
+            <label class="mode-pill"><input type="radio" name="mode" value="work" checked> Work</label>
+            <label class="mode-pill"><input type="radio" name="mode" value="short"> Short Break</label>
+            <label class="mode-pill"><input type="radio" name="mode" value="long"> Long Break</label>
+          </div>
+        </div>
+
+        <div class="card companion-card">
+          <div class="section spotify-section">
+            <div class="section-heading">
+              <div>
+                <p class="section-label">Music</p>
+                <h3>Spotify corner</h3>
+              </div>
+              <span class="status-dot spotify-dot"></span>
+            </div>
+            <p id="spotify-status">Not connected</p>
+            <div class="btn-group">
+              <button id="spotify-login">Connect Spotify</button>
+              <button id="toggle-play">Play / Pause</button>
+              <button id="prev-track">⏮ Prev</button>
+              <button id="next-track">⏭ Next</button>
+            </div>
+            
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="section discord-section">
+            <div class="section-heading">
+              <div>
+                <p class="section-label">Presence</p>
+                <h3>Discord status</h3>
+              </div>
+              <span class="status-dot discord-dot"></span>
+            </div>
+            <p id="discord-status">Discord not connected</p>
+            <div class="btn-group discord-actions">
+              <button id="discord-connect">Link Discord</button>
+              <button id="discord-presence">Show Focus Session</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card goal-card">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Study tracker</p>
+              <h3>What are you studying?</h3>
+            </div>
+          </div>
+
+          <div class="goal-form">
+            <label class="input-group">
+              <span>Topic / subject</span>
+              <input id="study-topic" type="text" placeholder="e.g. Calculus revision" />
+            </label>
+
+            <label class="input-group">
+              <span>Final goal (sessions)</span>
+              <input id="study-goal" type="number" min="1" placeholder="e.g. 12" />
+            </label>
+
+            <button id="save-goal">Save Study Goal</button>
+          </div>
+
+          <div class="goal-summary" id="goal-summary">
+            Pick a topic and set a session goal to start tracking long-term progress.
+          </div>
+
+          <div class="goal-progress">
+            <div class="goal-progress__bar">
+              <div class="goal-progress__fill" id="goal-progress-fill"></div>
+            </div>
+            <div class="goal-progress__meta">
+              <span id="goal-progress-text">0 / 0 sessions</span>
+              <span id="goal-progress-percent">0%</span>
+            </div>
+          </div>
+
+          <div class="goal-list-wrap">
+            <p class="section-label">Tracked goals</p>
+            <div id="goal-list" class="goal-list">
+              <p class="goal-empty">No study goals yet.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card stats-card">
+          <div class="stats-copy">
+            <p class="section-label">Daily progress</p>
+            <h3>Today’s Focus</h3>
+            <p class="stats-text">
+              Every completed cycle builds consistency. Keep stacking calm, intentional sessions.
+            </p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-block">
+              <span class="stat-label">Pomodoros completed</span>
+              <strong id="pomodoros-summary">0</strong>
+            </div>
+            <div class="stat-block">
+              <span class="stat-label">Active topic</span>
+              <strong id="active-topic">None</strong>
+            </div>
+            <div class="stat-block">
+              <span class="stat-label">Goal status</span>
+              <strong id="goal-status">Not set</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const pomodorosSource = document.getElementById("pomodoros");
+    const pomodorosSummary = document.getElementById("pomodoros-summary");
+
+    const syncPomodoroSummary = () => {
+      pomodorosSummary.textContent = pomodorosSource.textContent;
+    };
+
+    syncPomodoroSummary();
+    pomodorosSource.addEventListener("DOMSubtreeModified", syncPomodoroSummary);
+  </script>
+</body>
+</html>
